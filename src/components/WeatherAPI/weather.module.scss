@@ -1,8 +1,13 @@
 .weather {
     &Container {
-        width: 100%;
         display: flex;
         justify-content: center;
         color: #000;
+    }
+
+    &Section {
+        background-color: #ADD8E6;
+        padding: 20px;
+        border-radius: 10px;
     }
 }
