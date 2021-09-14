@@ -1,4 +1,5 @@
-const path = require('path')
+const path = require('path');
+require('dotenv').config();
 
 module.exports = {
   reactStrictMode: true,
@@ -7,6 +8,6 @@ module.exports = {
   },
 
   env: {
-    apiWeatherKey: '6efe7a3954e41d023b4a18ddfd64c421',
+    apiWeatherKey: process.env.REACT_APP_WEATHER_API_KEY,
   },
 }
