@@ -4,13 +4,14 @@ import axios from 'axios';
 
 const WeatherAPI = ()  => {
 
-  const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
   const [data, setData] = useState([]);
   useEffect(() => {
+    const API_KEY = process.env.apiWeatherKey;
+
     const fetchData = async (props) => {
       const result = await axios(
-        `https://api.openweathermap.org/data/2.5/weather?q=rotterdam&units=metric&appid=6efe7a3954e41d023b4a18ddfd64c421`,
+        `https://api.openweathermap.org/data/2.5/weather?q=rotterdam&units=metric&appid=${API_KEY}`
       );
       setData([result.data]);
     };
