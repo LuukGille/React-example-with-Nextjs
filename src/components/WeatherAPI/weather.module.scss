@@ -2,12 +2,54 @@
     &Container {
         display: flex;
         justify-content: center;
+        align-items: center;
         color: #000;
+        background-image: url('../../images/clouds.jpg');
+        background-size: cover;
+        object-fit: contain;
+        background-repeat: no-repeat;
+        height: 100vh;
     }
 
     &Section {
-        background-color: #ADD8E6;
-        padding: 20px;
+        background-color: rgba(173, 216, 230, 0.5);
+        padding: 40px;
         border-radius: 10px;
+        height: 250px;
+
+        &Input {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+
+            &Error {
+                height: 10px;
+                &Text {
+                    color: #FF0000;
+                    font-style: italic;
+                    margin: 0;
+                }
+            }
+        }
+
+        &Text {
+            display: flex;
+            justify-content: space-between;
+
+            &City {
+                font-size: 20px;
+                margin-top: 35px;
+            }
+            &Temp {
+                font-size: 40px;
+                margin-top: 20px;
+            }
+        }
+
+
     }
 }

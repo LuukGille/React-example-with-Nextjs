@@ -6,6 +6,7 @@ const WeatherAPI = ()  => {
 
   let [city, setCity] = useState('rotterdam');
   const [data, setData] = useState([]);
+  const [error, setError] = useState("");
   useEffect(() => {
     const API_KEY = process.env.apiWeatherKey;
 
@@ -14,8 +15,10 @@ const WeatherAPI = ()  => {
           `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`
         )    .then(result => {
             setData([result.data]);
+            setError("");
         })    .catch(err => {
           console.log(err)
+            setError("City not found");
       });
     };
     fetchData();
@@ -26,12 +29,17 @@ const WeatherAPI = ()  => {
           <div className={styles.weatherContainer}>
               <div className={styles.weatherSection}>
                   <h1 className={styles.weatherSectionTitle}>What is the temperature?</h1>
-                  <p>Fill in your city to see your temperature</p>
-                  <input onChange={(e) => setCity(e.target.value)} />
+                  <p>Fill in your city to see the temperature</p>
+                  <input className={styles.weatherSectionInput} onChange={(e) => setCity(e.target.value)} />
+                  <div className={styles.weatherSectionInputError}>
+                    <span className={styles.weatherSectionInputErrorText}>{error}</span>
+                  </div>
                   {data.map((item) => (
                     <div key={item}>
-                      <div>{item.name}</div>
-                      <div>{item.main.temp}</div>
+                      <div className={styles.weatherSectionText}>
+                        <p className={styles.weatherSectionTextCity}>Your city is {item.name}.</p>
+                        <span className={styles.weatherSectionTextTemp}>{Math.round(item.main.temp)}°</span>
+                      </div>
                     </div>
                   ))}
               </div> 
